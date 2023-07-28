@@ -2871,6 +2871,12 @@ const feedbackText = `Le Nazioni che soddisfano il criterio di ricerca sono `;
 
 const searchBarPlaceholder = `Ricerca per Nazione, Capitale o Lingua...`;
 
+const arrowDownImgPath = `./images/downArrow.svg`;
+const arrowUpImgPath = `./images/upArrow.svg`; 
+
+const graphShowButtonImgPath = `./images/chart.png`;
+const closeCrossImgPath = `./images/closeCross.png`; 
+
 const graphTitlePopulation = `Nazioni cercate per Popolazione`;
 const graphTitleLanguages = `Lingue più parlate delle Nazioni cercate`;
 
@@ -2895,7 +2901,12 @@ const searchButtons = document.querySelectorAll(".searchButton");
 const sortButtons = document.querySelectorAll(".sortButton");
 const graphButtons = document.querySelectorAll(".graphButton");
 
+const graphShowButton = document.querySelector("#graphShowButton");
+const graphCloseButton = document.querySelector("#graphCloseButton");
+
 const countriesDiv = document.querySelector("#countriesDiv");
+
+const graphDiv = document.querySelector("#graphDiv");
 
 const graph = document.querySelector("#graph");
 const graphTitle = document.querySelector("#graphTitle");
@@ -2952,6 +2963,9 @@ function initSwitchStatusGraph() {
         switchStatusGraph[propertiesStrings[i]] = false;
     }
 
+    switchStatusGraph[propertiesStrings[0]] = true;
+    HTMLElementes.item(0).classList.toggle("activeButton", true);
+
     return switchStatusGraph;
 }
 
@@ -2996,13 +3010,13 @@ function activateSortOption(option, switchStatus=switchStatusSort, buttonsArray=
         case 1:
             button.classList.toggle("activeButton", true);
             reverseSortStatus = false;
-            button.querySelector("img").src = "./images/downArrow.svg";
+            button.querySelector("img").src = arrowDownImgPath;
             button.querySelector("img").style.display = "block";
             break;
         case 2:
             //button.classList.toggle("activeButton", true);
             reverseSortStatus = true;
-            button.querySelector("img").src = "./images/upArrow.svg";
+            button.querySelector("img").src = arrowUpImgPath;
             button.querySelector("img").style.display = "block";
             break;
         default:
@@ -3184,12 +3198,13 @@ function displayGraph(countriesArray, switchGraph=switchStatusGraph) {
 
     switch(graphOption) {
         case "Popolazione":
-            displayMostPopulatedCountries(countriesArray);
+            displayMostPopulatedCountries([...countriesArray]);
             return;
         case "Lingue":
-            displayMostSpokenLanguages(countriesArray);
+            displayMostSpokenLanguages([...countriesArray]);
             return;
         default:
+            displayMostPopulatedCountries([...countriesArray]);
             return;
     }
 }
@@ -3272,7 +3287,15 @@ function createBar(max, current) {
     return graphBarDiv;
 }
 
-
+function showHideGraph() {
+    if (graphDiv.style.display === "none") {
+        graphDiv.style.display = "flex";
+        document.body.classList.add("overlayBlur");
+    } else {
+        graphDiv.style.display = "none";
+        document.body.classList.remove("overlayBlur");
+    }
+}
 
 
 
@@ -3282,7 +3305,11 @@ subtitle.textContent = subtitleText;
 
 searchBar.placeholder = searchBarPlaceholder;
 
-//graphDiv.style.display = "None";
+graphShowButton.innerHTML = `<img src="${graphShowButtonImgPath}"/>`;
+graphCloseButton.innerHTML = `<img src="${closeCrossImgPath}"/>`;
+
+graphDiv.style.display = "none";
+
 
 for(const elem of searchButtons) {
     elem.addEventListener("click", () => { activateOption(elem.textContent, switchStatusSearch, [...searchButtons]) });
@@ -3293,6 +3320,10 @@ for(const elem of sortButtons) {
 for(const elem of graphButtons) {
     elem.addEventListener("click", () => { activateOption(elem.textContent, switchStatusGraph, [...graphButtons]) });
 }
+
+//graphShowButton.addEventListener("click", () => graphDiv.style.display == "none" ? graphDiv.style.display = "flex" : graphDiv.style.display = "none");
+graphShowButton.addEventListener("click", showHideGraph);
+graphCloseButton.addEventListener("click", showHideGraph);
 
 searchBar.addEventListener("input", funzioneMaster);
 
