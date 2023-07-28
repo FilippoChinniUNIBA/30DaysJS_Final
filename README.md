@@ -12,4 +12,5 @@ Permette di applicare 3 Criteri di Ordinamento dei Risultati:<br>
 - Ordinamento per nome Nazione
 - Ordinamento per nome Capitale
 - Ordinamento per Popolazione
+  
 Permette di ordinare il risultato finale della ricerca in ordine alfabetico o antialfabetico.<br>
