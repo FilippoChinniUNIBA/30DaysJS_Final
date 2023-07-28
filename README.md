@@ -7,6 +7,7 @@ Permette di applicare 3 Criteri di Ricerca per la ricerca di un insieme di Nazio
 - Ricerca per Nazione
 - Ricerca per Capitale
 - Ricerca per Lingua
+
 Permette di applicare 3 Criteri di Ordinamento dei Risultati:<br>
 - Ordinamento per nome Nazione
 - Ordinamento per nome Capitale
