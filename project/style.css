@@ -397,6 +397,9 @@ body.overlayBlur #graphDiv {
 }
 
 .graphBarDiv {
+    display: flex;
+    align-items: center;
+
     width: 60vw;
     margin-right: 3vw;
     margin-left: 3vw;
