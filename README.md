@@ -2,8 +2,8 @@
 
 <b>Progetto del Giorno 30 di 30 Days of Javascript.</b>
 
-Permette di visualizzare i Paesi del Mondo.<br><br>
-Permette di visualizzare informazioni riguardati i paesi: Bandiera, Nome, Capitale, Lingue Ufficiali, Popolazione, Area, Regione Geografica.<br>
+Permette di visualizzare i Paesi del Mondo.<br>
+Permette di visualizzare informazioni riguardati i paesi: Bandiera, Nome, Capitale, Lingue Ufficiali, Popolazione, Area, Regione Geografica.<br><br>
 Permette di applicare 3 Criteri di Ricerca per la ricerca di un insieme di Nazioni:<br>
 - Ricerca per Nazione
 - Ricerca per Capitale
